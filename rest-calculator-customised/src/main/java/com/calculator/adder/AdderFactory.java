@@ -1,6 +1,6 @@
 package com.calculator.adder;
 
-import com.calculator.adder.Adder;
+import com.calculator.exception.CalcuatorException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -24,13 +24,13 @@ public class AdderFactory {
     }
 
     //use getAdder method to get required Adder Type
-    public Adder getAdder(String operand1, String operand2) {
+    public Adder getAdder(String operand1, String operand2) throws CalcuatorException {
         return adderList
                 .stream()
                 .filter(consumer -> consumer.canAccept(operand1, operand2))
                 .findAny()
                 .orElseThrow(
                         () ->
-                                new RuntimeException("Unable to add " + operand1 + " and " + operand2));
+                                new CalcuatorException("Addition not supported for " + operand1 + " and " + operand2));
     }
 }

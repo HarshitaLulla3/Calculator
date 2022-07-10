@@ -1,10 +1,6 @@
 package com.calculator.controller;
 
 import static com.calculator.model.ResultBuilder.getResult;
-import static com.calculator.model.ResultBuilder.getResultFromError;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 import com.calculator.service.CalculatorService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +16,7 @@ import com.calculator.model.ApiResult;
 @RestController
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RequestMapping("/calculator")
-public class CalculationController {
+public class CalculatorController {
 
    private final CalculatorService calculatorService;
 
