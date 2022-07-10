@@ -1,5 +1,5 @@
 package com.calculator.service;
 
 public interface CalculatorService {
-    String operation (String operand1, String operand2);
+    String add (String operand1, String operand2);
 }

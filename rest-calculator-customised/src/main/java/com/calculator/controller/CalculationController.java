@@ -22,10 +22,10 @@ import com.calculator.model.ApiResult;
 @RequestMapping("/calculator")
 public class CalculationController {
 
-   private final CalculatorService adderService;
+   private final CalculatorService calculatorService;
 
    @GetMapping("/add")
    public ApiResult add(@RequestParam String operand1, @RequestParam String operand2) {
-     return getResult(adderService.operation(operand1, operand2));
+     return getResult(calculatorService.add(operand1, operand2));
    }
 }
