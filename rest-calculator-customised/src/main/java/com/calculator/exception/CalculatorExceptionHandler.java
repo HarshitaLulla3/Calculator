@@ -11,8 +11,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class CalculatorExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(value=CalcuatorException.class)
+    @ExceptionHandler(CalcuatorException.class)
     protected ResponseEntity<Object> handleCalculatorException (CalcuatorException exception) {
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value=Exception.class)
+    protected ResponseEntity<Object> handleRunTimeException (Exception exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }

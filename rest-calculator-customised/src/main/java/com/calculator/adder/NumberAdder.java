@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class NumberAdder implements Adder {
     @Override
-    public Boolean canAccept(String operand1, String operand2) {
+    public Boolean isApplicable(String operand1, String operand2) {
         return NumberUtils.isCreatable(operand1) && NumberUtils.isCreatable(operand2);
     }
 

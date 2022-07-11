@@ -27,10 +27,10 @@ public class AdderFactory {
     public Adder getAdder(String operand1, String operand2) throws CalcuatorException {
         return adderList
                 .stream()
-                .filter(consumer -> consumer.canAccept(operand1, operand2))
+                .filter(consumer -> consumer.isApplicable(operand1, operand2))
                 .findAny()
                 .orElseThrow(
-                        () ->
-                                new CalcuatorException("Addition not supported for " + operand1 + " and " + operand2));
+                        () -> new CalcuatorException("Addition not supported for " + operand1 + " and " + operand2)
+                );
     }
 }

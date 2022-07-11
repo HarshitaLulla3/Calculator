@@ -126,4 +126,18 @@ public class CalculatorServiceTest {
 
         assertThat(exception.getMessage()).isEqualTo(expectedMessage);
     }
+
+    @Test
+    @DisplayName("test if passing an null value raises CalculatorException")
+    void testAddNullArgumentException() {
+        final String operand1 = null;
+        final String operand2 = "1";
+        final String expectedMessage = "Addition not supported for " + operand1 + " and " + operand2;
+
+        CalcuatorException exception = assertThrows(CalcuatorException.class,
+                                                    () -> {calculatorService.add(operand1, operand2);}
+        );
+
+        assertThat(exception.getMessage()).isEqualTo(expectedMessage);
+    }
 }
