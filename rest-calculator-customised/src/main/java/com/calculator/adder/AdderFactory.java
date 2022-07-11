@@ -23,7 +23,6 @@ public class AdderFactory {
                 new ArrayList<>(context.getBeansOfType(Adder.class).values());
     }
 
-    //use getAdder method to get required Adder Type
     public Adder getAdder(String operand1, String operand2) throws CalcuatorException {
         return adderList
                 .stream()

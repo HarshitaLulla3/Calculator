@@ -23,7 +23,7 @@ public class CalculatorErrorController implements ErrorController {
         return "error " + status;
     }
 
-    // ToDo: Redundant method, required by the current spring-boot version. Remove after upgrade
+    // ToDo: Redundant method, required by the current spring-boot version. Remove after spring-boot removes it as mandatory
     public String getErrorPath() {
         return null;
     }
