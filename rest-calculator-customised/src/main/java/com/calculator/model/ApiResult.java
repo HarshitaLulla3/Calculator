@@ -1,5 +1,6 @@
 package com.calculator.model;
 
+
 public class ApiResult {
 
    private String result;

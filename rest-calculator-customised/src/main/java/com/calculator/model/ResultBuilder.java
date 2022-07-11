@@ -1,8 +1,5 @@
 package com.calculator.model;
 
-import java.math.BigDecimal;
-
-
 public class ResultBuilder {
 
    private ResultBuilder() {
@@ -11,10 +8,6 @@ public class ResultBuilder {
 
    public static ApiResult getResult( Object result ) {
       return ApiResult.withResult(result.toString());
-   }
-
-   public static ApiResult getResult( BigDecimal result ) {
-      return ApiResult.withResult(result.toPlainString());
    }
 
    public static ApiResult getResultFromError(String errorMessage) {

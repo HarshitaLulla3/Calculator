@@ -1,6 +1,7 @@
 package com.calculator.adder;
 
-import com.calculator.exception.CalculatorOverflowException;
+import com.calculator.adder.exception.OverflowException;
+import com.calculator.adder.exception.UnderflowException;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.stereotype.Component;
@@ -19,22 +20,34 @@ public class NumberAdder implements Adder {
         double number1 = Double.parseDouble(operand1);
         double number2 = Double.parseDouble(operand2);
 
-        if (number1 == Double.POSITIVE_INFINITY || number1 == Double.NEGATIVE_INFINITY) {
-            throw new CalculatorOverflowException(operand1 + " is out of supported numeric range");
+        if (number1 == Double.POSITIVE_INFINITY) {
+            throw new OverflowException(operand1 + " is out of supported numeric range");
         }
 
-        if (number2 == Double.POSITIVE_INFINITY || number2 == Double.NEGATIVE_INFINITY) {
-            throw new CalculatorOverflowException(operand2 + " is out of supported numeric range");
+        if (number1 == Double.NEGATIVE_INFINITY) {
+            throw new UnderflowException(operand1 + " is out of supported numeric range");
+        }
+
+        if (number2 == Double.POSITIVE_INFINITY) {
+            throw new OverflowException(operand2 + " is out of supported numeric range");
+        }
+
+        if (number2 == Double.NEGATIVE_INFINITY) {
+            throw new UnderflowException(operand2 + " is out of supported numeric range");
         }
 
         double sum = Double.sum(number1, number2);
 
         if (sum == Double.POSITIVE_INFINITY) {
-            return String.valueOf(Double.POSITIVE_INFINITY);
+            throw new OverflowException(
+                    "Sum of " + operand1 + " and " + operand2 + "is out of supported numeric range"
+            );
         }
 
         if (sum == Double.NEGATIVE_INFINITY) {
-            return String.valueOf(Double.NEGATIVE_INFINITY);
+            throw new UnderflowException(
+                    "Sum of " + operand1 + " and " + operand2 + "is out of supported numeric range"
+            );
         }
 
         if ((int) sum == sum) {
