@@ -17,7 +17,7 @@ import com.calculator.model.ApiResult;
 @Log4j2
 @RestController
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-@RequestMapping("/calculator")
+//@RequestMapping("/calculator")
 public class CalculatorController {
 
    private final CalculatorService calculatorService;
